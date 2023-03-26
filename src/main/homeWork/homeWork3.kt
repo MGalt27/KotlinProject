@@ -1,7 +1,7 @@
 fun main(){
     ExC(2)
     //это мой первыый проект на гитхабе
-
+    println("Hello, kotlin!!!!")
 }
 
 fun ExA(hour: Int, minutes: Int){
