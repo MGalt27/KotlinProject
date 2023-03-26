@@ -1,5 +1,4 @@
 fun main(){
-    ExC(2)
 
 }
 
@@ -48,21 +47,18 @@ fun ExB(string: String){
                 (palindromeEnd == reverseStringEnd.reversed()) -> println(palindromeEnd)
                 else -> {
                     while (!trueOrFalseEnd){
-                        var reverseStringLengthEnd = reverseStringEnd.length
-                        var palindromeLengthEnd = palindromeEnd.length; //println("$palindromeLengthEnd ------ len")
-                        reverseStringEnd = (reverseStringEnd.removeRange(reverseStringLengthEnd-1 , reverseStringLengthEnd)); //println(reverseStringEnd)
-                        reverseStringEnd = reverseStringEnd.reversed(); //println("$reverseStringEnd ----- reverse")
-                        palindromeEnd = palindromeEnd.removeRange(palindromeLengthEnd - 1, palindromeLengthEnd); //println("$palindromeEnd ------- palEnd")
+                        val reverseStringLengthEnd = reverseStringEnd.length
+                        val palindromeLengthEnd = palindromeEnd.length
+                        reverseStringEnd = (reverseStringEnd.removeRange(reverseStringLengthEnd-1 , reverseStringLengthEnd))
+                        reverseStringEnd = reverseStringEnd.reversed();
+                        palindromeEnd = palindromeEnd.removeRange(palindromeLengthEnd - 1, palindromeLengthEnd)
                         when{
-                            //(palindromeLength == 1) -> {println("-1"); trueOrFalse = true}
                             (palindromeLengthEnd == 2) -> {
-                                //println("im here")
                                 while (!trueOrFalseStart){
-                                    //var reverseStringLengthStart = reverseStringStart.length
-                                    var palindromeLengthStart = palindromeStart.length; //println(palindromeLengthStart)
-                                    reverseStringStart = (reverseStringStart.removeRange(0, 1)); //println(reverseStringStart)
-                                    reverseStringStart = reverseStringStart.reversed(); //println("$reverseStringStart ------ reverse")
-                                    palindromeStart = palindromeStart.removeRange(0, 1); //println("$palindromeStart ----- palStart")
+                                    val palindromeLengthStart = palindromeStart.length
+                                    reverseStringStart = (reverseStringStart.removeRange(0, 1))
+                                    reverseStringStart = reverseStringStart.reversed()
+                                    palindromeStart = palindromeStart.removeRange(0, 1)
                                     when{
                                         (palindromeLengthStart == 2) -> {
                                             println("-1");
@@ -84,67 +80,4 @@ fun ExB(string: String){
         }
         else -> println("string length out of range")
     }
-}
-
-fun ExC(iterations: Int){
-    fun checkingConditions(mode: Int, list: List<String>): Boolean{
-        var bool: Boolean = false
-        when{
-            (mode == 0) -> {
-                if (list[1].toInt() in 1..1000){
-                    if (list.size == 4){
-                        for (item in 2 until list.size){
-                            when{
-                                (list[item].toInt() in -10000..10000) -> {}
-                                else -> return bool
-                            }
-                        }
-                        bool = true
-                    }
-                }
-            }
-            (mode == 1) -> {
-                //print("im here")
-                if (list.size == 9){
-                    for (item in 1 until list.size){
-                        when{
-                            (list[item].toInt() in -10000..10000) -> {}
-                            else -> return bool
-                        }
-                    }
-                    bool = true
-                }
-            }
-        }
-        return bool
-    }
-
-    for (iteration in 1..iterations){
-        print("Target - "); var target = readln().split(" ")
-        println(target.size)
-        when{
-            (target[0] == "0") -> {
-                //println(checkingConditions(0, target))
-                when{
-//                    (target[1].toInt() in 1..1000 && -10000 <= target[2].toInt() && -10000 <= target[3].toInt() && target.size == 4) -> {
-//                        println("okok")
-//                    }
-                    (checkingConditions(0, target))  -> {
-                        println("okok")
-
-                    }
-                    else -> println("error")
-                }
-            }
-            (target[0] == "1") -> {
-                when{
-                    (checkingConditions(1, target)) -> println("okok")
-                    else -> println("error")
-                }
-
-            }
-            else -> println("error")
-        }
-    }
-
 }
