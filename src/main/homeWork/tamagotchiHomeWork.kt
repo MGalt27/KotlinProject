@@ -28,11 +28,11 @@ class Tamagotchi(_name:String, _animalType:String){
 
     private fun statusAlive(){
         when{
-            (liveTimeHour >= 50) -> {
+            (liveTimeHour == 24) -> {
                 statusAlive = "Dead"
                 reasonDeath = "age"
             }
-            (statusHungry <= 0) -> {
+            (statusHungry > 100) -> {
                 statusAlive = "Dead"
                 reasonDeath = "statusHungry"
             }
@@ -51,7 +51,7 @@ class Tamagotchi(_name:String, _animalType:String){
             else -> {}
         }
         when{
-            (statusHungry >= 100) -> statusHungry = 100
+            (statusHungry <= 0) -> statusHungry = 0
             (statusToilet <= 0) -> statusToilet = 0
             (energy >= 100) -> energy = 100
             (mood >= 100) -> mood = 100
@@ -66,18 +66,24 @@ class Tamagotchi(_name:String, _animalType:String){
                 (choise == 1) -> {
                     mood += 10
                     energy -= 10
+                    statusToilet+=5
+                    statusHungry+=5
                     liveTimeHour+=1
                     println("${colorLineYellow}done")
                 }
                 (choise == 2) -> {
                     mood += 20
                     energy -= 40
-                    liveTimeHour+=1
+                    statusToilet+=5
+                    statusHungry+=15
+                    liveTimeHour+=15
                     println("${colorLineYellow}done")
                 }
                 (choise == 3) -> {
                     mood += 50
                     energy -= 90
+                    statusToilet+=30
+                    statusHungry+=30
                     liveTimeHour+=1
                     println("${colorLineYellow}done")
                 }
@@ -93,7 +99,7 @@ class Tamagotchi(_name:String, _animalType:String){
         if (statusAlive == "Alive"){
             statusToilet -= 30
             statusHungry += 5
-            mood += 10
+            mood -= 10
             liveTimeHour+=1
             println("${colorLineYellow}done")
         }
@@ -136,7 +142,7 @@ class Tamagotchi(_name:String, _animalType:String){
         if (statusAlive == "Alive"){
             statusToilet += 30
             statusHungry += 25
-            mood += 20
+            mood -= 20
             energy +=100
             liveTimeHour+=1
             println("${colorLineYellow}done")
