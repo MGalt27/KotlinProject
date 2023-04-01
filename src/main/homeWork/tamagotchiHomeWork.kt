@@ -198,14 +198,14 @@ class Tamagotchi(_name:String, _animalType:String){
                     "${colorLineBlue}game - 5\n" +
                     "${colorLineBlue}exit - 0\n" +
                     "${colorLineBlue}************************\n")
-            print("${colorLineYellow}choise - "); var choise = readln().toInt()
+            print("${colorLineYellow}choise - "); val choise = readln().toInt()
             when{
                 (choise == 1) -> {
                     var statusAnimalCard = true
                     while (statusAnimalCard){
                         animalCard()
                         println("${colorLineBlue}back - 0")
-                        print("${colorLineYellow}choise - "); var choiseAnimalCard = readln().toInt()
+                        print("${colorLineYellow}choise - "); val choiseAnimalCard = readln().toInt()
                         if (choiseAnimalCard == 0){
                             statusAnimalCard = false
                         }
@@ -226,7 +226,7 @@ class Tamagotchi(_name:String, _animalType:String){
                                 "   ${colorLineBlue}statusHungry -= 30\n" +
                                 "   ${colorLineBlue}statusToilet += 20\n")
                         println("${colorLineBlue}back - 0")
-                        print("${colorLineYellow}choise - "); var choiseEat = readln().toInt()
+                        print("${colorLineYellow}choise - "); val choiseEat = readln().toInt()
                         when{
                             (choiseEat == 1) -> { eat(1) }
                             (choiseEat == 2) -> { eat(2) }
@@ -238,8 +238,8 @@ class Tamagotchi(_name:String, _animalType:String){
                 (choise == 3) -> { toilet() }
                 (choise == 4) -> { sleep() }
                 (choise == 5) -> {
-                    var statusGame = true
-                    while (statusGame){
+                    var statusPlayGame = true
+                    while (statusPlayGame){
                         println("${colorLineBlue}1 - firstGame:\n" +
                                 "   ${colorLineBlue}mood += 10\n" +
                                 "   ${colorLineBlue}energy -= 10\n" +
@@ -252,12 +252,12 @@ class Tamagotchi(_name:String, _animalType:String){
                                 "   ${colorLineBlue}mood += 50\n" +
                                 "   ${colorLineBlue}energy -= 90\n")
                         println("${colorLineBlue}back - 0")
-                        print("${colorLineYellow}choise - "); var choiseGame = readln().toInt()
+                        print("${colorLineYellow}choise - "); val choiseGame = readln().toInt()
                         when{
                             (choiseGame == 1) -> { game(1) }
                             (choiseGame == 2) -> { game(2) }
                             (choiseGame == 3) -> { game(3) }
-                            (choiseGame == 0) -> { statusGame = false}
+                            (choiseGame == 0) -> { statusPlayGame = false}
                         }
                     }
                 }
